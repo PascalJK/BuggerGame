@@ -2,41 +2,146 @@
 <ContentPage
     x:Class="BuggerGame.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Shell.NavBarIsVisible="False">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Padding="30,0"
-            Spacing="25"
-            VerticalOptions="Center">
+    <Grid>
+        <!--  Game Play View  -->
+        <Grid IsVisible="false" RowDefinitions="auto, *">
+            <BoxView
+                Grid.RowSpan="2"
+                Opacity=".8"
+                Color="Black" />
 
-            <Image
-                HeightRequest="200"
-                HorizontalOptions="Center"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                Source="dotnet_bot.png" />
+            <Grid
+                Padding="15,5,0,15"
+                ColumnDefinitions="auto, auto, *"
+                RowDefinitions="auto">
+                <Label Grid.Column="1" HorizontalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                FontFamily="FaS"
+                                FontSize="20"
+                                Text="{StaticResource IconBug}" />
+                            <Span FontSize="17" Text="0/15" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label
+                    Grid.Column="2"
+                    HorizontalOptions="End"
+                    Text="Time: 3:00"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+
+            <Grid
+                Grid.Row="1"
+                ColumnDefinitions="*, *, *, *, *, *, *, *, *"
+                RowDefinitions="*,*,*,*,*,*,*,*,*,*">
+
+                <ImageButton>
+                    <ImageButton.Source>
+                        <FontImageSource
+                            FontFamily="FaS"
+                            Glyph="{StaticResource IconBug}"
+                            Size="35"
+                            Color="{AppThemeBinding Dark=WhiteSmoke,
+                                                    Light=Black}" />
+                    </ImageButton.Source>
+                </ImageButton>
+            </Grid>
+        </Grid>
+
+        <!--  MainView  -->
+        <VerticalStackLayout Spacing="5" VerticalOptions="Center">
 
             <Label
+                Margin="0,0,0,10"
                 FontSize="32"
                 HorizontalOptions="Center"
                 SemanticProperties.HeadingLevel="Level1"
-                Text="Hello, World!" />
+                Text="Bugger Tugger" />
 
-            <Label
-                FontSize="18"
+            <Border
+                Padding="15,10"
+                BackgroundColor="Transparent"
                 HorizontalOptions="Center"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                SemanticProperties.HeadingLevel="Level2"
-                Text="Welcome to .NET Multi-platform App UI" />
+                Stroke="{StaticResource Primary}"
+                StrokeShape="RoundRectangle, 5"
+                StrokeThickness="3">
+                <HorizontalStackLayout>
+                    <Label
+                        FontFamily="FaR"
+                        FontSize="50"
+                        Text="{StaticResource IconPlay}" />
+                </HorizontalStackLayout>
+            </Border>
 
-            <Button
-                x:Name="CounterBtn"
-                Clicked="OnCounterClicked"
+            <Border
+                Padding="15,10"
+                BackgroundColor="Transparent"
                 HorizontalOptions="Center"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Text="Click me" />
+                Stroke="{StaticResource Primary}"
+                StrokeShape="RoundRectangle, 5"
+                StrokeThickness="3">
+                <HorizontalStackLayout>
+                    <Label
+                        FontFamily="FaS"
+                        FontSize="50"
+                        Text="{StaticResource IconTrophy}" />
+                </HorizontalStackLayout>
+            </Border>
+
+            <Border
+                Padding="15,10"
+                BackgroundColor="Transparent"
+                HorizontalOptions="Center"
+                Stroke="{StaticResource Primary}"
+                StrokeShape="RoundRectangle, 5"
+                StrokeThickness="3">
+                <HorizontalStackLayout>
+                    <Label
+                        FontFamily="FaS"
+                        FontSize="50"
+                        Text="{StaticResource IconGear}" />
+                </HorizontalStackLayout>
+            </Border>
+
+            <Border
+                Padding="15,10"
+                BackgroundColor="Transparent"
+                HorizontalOptions="Center"
+                Stroke="{StaticResource Primary}"
+                StrokeShape="RoundRectangle, 5"
+                StrokeThickness="3">
+                <HorizontalStackLayout>
+                    <Label
+                        FontFamily="FaS"
+                        FontSize="50"
+                        Text="{StaticResource IconQuestion}" />
+                </HorizontalStackLayout>
+            </Border>
 
         </VerticalStackLayout>
-    </ScrollView>
 
+        <!--  Game Start View (Needed??)  -->
+        <Grid IsVisible="false">
+            <BoxView Opacity=".8" Color="Black" />
+            <Grid RowDefinitions="*, auto, auto, *">
+                <Label
+                    Margin="20,35,20,0"
+                    FontSize="45"
+                    Text="Click Button To Start" />
+
+                <StackLayout Grid.Row="1" Spacing="0">
+                    <Label FontSize="25" Text="Best Time: 10" />
+                    <Label FontSize="25" Text="Total Touches: 10" />
+                </StackLayout>
+
+                <Button Grid.Row="2" Text="Start" />
+            </Grid>
+        </Grid>
+    </Grid>
 </ContentPage>
